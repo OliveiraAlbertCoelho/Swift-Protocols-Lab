@@ -121,6 +121,27 @@ protocol Flyable {
  var airspeedVelocity: Double { get }
 }
 ```
+```swift
+protocol Bird {
+var name: String { get }
+var canFly: Bool { get }
+}
+
+protocol Flyable {
+var airspeedVelocity: Double { get }
+}
+struct Penguin: Bird {
+var name: String
+let canFly = false
+}
+struct Eagle: Bird, Flyable {
+var name: String
+
+var canFly = true
+
+var airspeedVelocity = 2.0
+}
+```
 
 </br> </br>
 
@@ -145,7 +166,28 @@ bruceBanner.transform() . // hulk
 
 bruceBanner.transform()  // notHulk
 ```
+```swift
+protocol Transformation{
+mutating func transform ()
+}
+enum SuperHero: Transformation {
+case hulk
+case notHulk
+mutating func transform() {
+switch self {
+case .hulk:
+self = .notHulk
+case .notHulk:
+self = .hulk
+}
+}}
+var bruceBanner = SuperHero.notHulk
 
+bruceBanner.transform()  // hulk
+
+bruceBanner.transform()  // notHulk
+
+```
 </br> </br>
 
 
