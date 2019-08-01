@@ -207,7 +207,33 @@ f. Put an instance of each of your classes in an array.
 
 g. Iterate over the array and have them print their `message` property
 
+```swift
+protocol Communication {
+var message: String {get}
+}
+class Cow: Communication {
+let message = "I mooo"
 
+
+}
+class Dog: Communication {
+let message = "I bark"
+
+
+}
+class Cat: Communication {
+let message = "I meow"
+
+}
+var mrCat = Cat.init()
+var mrCow = Cow.init()
+var sirDog = Dog.init()
+var sounds : [Communication] = [mrCat,mrCow,sirDog]
+for i in sounds {
+print(i.message)
+}
+
+```
 ## Question 6
 
 The HeartRateReceiver class below represents a very simplified example of a class dedicated to receiving information from fitness tracking hardware with monitoring heart rate. The function startHeartRateMonitoringExample will generate random heart rates and assign them to currentHR, simulating how an instance of HeartRateReceiver may pick up on new heart rate readings at specific intervals.
