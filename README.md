@@ -39,7 +39,33 @@ three instances of a `Human`, then create an array called people of type [`Human
 Create a new array called sortedPeople of type [`Human`] that is the people array sorted by age.
 
 </br> </br>
+```swift
+class Human: CustomStringConvertible, Equatable ,Comparable{
+static func < (lhs: Human, rhs: Human) -> Bool {
+return  lhs.age < rhs.age
+}
 
+static func == (lhs: Human, rhs: Human) -> Bool {
+return    lhs.age == rhs.age && lhs.name == rhs.name
+}
+
+var description: String {
+get{
+return "my name is \(name) and age is \(age) "
+}}
+var  name: String
+var  age: Int
+init(name: String, age:Int) {
+self.name = name
+self.age = age
+}}
+var someone = Human(name: "Albert", age: 22)
+var anotherone = Human(name: "david", age:20)
+let anotherMe = Human(name: "Albert", age: 22)
+someone == anotherMe
+someone < anotherone
+
+```
 
 ## Question 2
 
@@ -56,7 +82,29 @@ and drive() should print "Begin pedaling!". Create an instance of Bike, print it
 then call drive().
 
 </br> </br>
+```swift
+protocol Vehicle {
+var numberOfWheels: Int {get}
+func drive()
+}
+struct Car: Vehicle{
+let numberOfWheels = 4
+func drive() {
+print("Vroom, vroom!")
+}
+}
+var myCar = Car()
+print("my car has \(myCar.numberOfWheels) wheels")
+myCar.drive()
+struct Bike: Vehicle{
+let numberOfWheels = 2
+func drive() {
+print("Begin pedaling!")
+}
 
+
+}
+```
 
 ## Question 3
 // Given the below two protocols, create a struct for penguin(a flightless bird) and an eagle.
